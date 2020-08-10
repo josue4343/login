@@ -6,7 +6,6 @@ registrarsefor.addEventListener('submit', (e) => {
     const registraremail = document.querySelector('#registrar-email').value;
     const registrarpassword = document.querySelector('#registrar-pass').value;
 
-    console.log(registraremail, registrarpassword)
 
     auth
         .createUserWithEmailAndPassword(registraremail, registrarpassword)
@@ -16,7 +15,7 @@ registrarsefor.addEventListener('submit', (e) => {
 
             //close the modal
             $('#registrarse').modal('hide')
-            console.log('registrado')
+            window.location.href = 'bot.html';
         })
 });
 
@@ -37,7 +36,7 @@ iniciarform.addEventListener('submit', (e) => {
 
                 //close the modal
                 $('#iniciarsesion').modal('hide')
-                console.log('iniciar sesion')
+                window.location.href = 'bot.html';
             })
             .catch(e => {
                 showError(e.message);
@@ -50,7 +49,7 @@ const salir = document.querySelector('#salir');
 salir.addEventListener('click', e => {
     e.preventDefault();
     auth.signOut().then(() => {
-       console.log('salir') 
+        console.log('salir')
     })
 })
 
@@ -58,14 +57,14 @@ salir.addEventListener('click', e => {
 //avento
 auth.onAuthStateChanged(user => {
     if (user) {
-    
+        location.href = "bot.html"
         const userInfo = {
             email: user.email,
             token: user.refreshToken,
             uid: user.uid
         };
         sessionStorage.setItem('usuario', JSON.stringify(userInfo));
-        location.href = "bot.html"
+     
     } else {
         sessionStorage.removeItem('usuario');
     }

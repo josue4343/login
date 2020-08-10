@@ -16,7 +16,7 @@ registrarsefor.addEventListener('submit', (e) => {
 
             //close the modal
             $('#registrarsea').modal('hide')
-            console.log('registrado')
+            window.location.href = 'bot.html';
         })
 });
 
@@ -36,23 +36,23 @@ iniciarform.addEventListener('submit', (e) => {
 
                 //close the modal
                 $('#iniciarsesion').modal('hide')
-                console.log('iniciar sesion')
+                window.location.href = 'bot.html'
             })
             .catch(e => {
                 showError(e.message);
             })
     })
-     //salir
+    //salir
 
-     const salir = document.querySelector('#salira');
+const salir = document.querySelector('#salira');
 
-     salir.addEventListener('click', e => {
-         e.preventDefault();
-         auth.signOut().then(() => {
-             location.href="index.html"
-         })
-     })
-//avento
+salir.addEventListener('click', e => {
+        e.preventDefault();
+        auth.signOut().then(() => {
+            location.href = "index.html"
+        })
+    })
+    //avento
 auth.onAuthStateChanged(user => {
     if (user) {
         // location.href = "bot.html"
